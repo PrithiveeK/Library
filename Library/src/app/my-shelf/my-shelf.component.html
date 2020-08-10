@@ -1,0 +1,11 @@
+<div>
+    <app-header-bar></app-header-bar>
+    <div class="shelf-container">
+        <app-shelf [op]="0" (openBook)="openTheBook($event)"></app-shelf>
+        <app-shelf [op]="1" (openBook)="openTheBook($event)"></app-shelf>
+        <app-shelf [op]="2" (openBook)="openTheBook($event)"></app-shelf>
+    </div>
+    <div class="book-result" *ngIf="viewBook">
+        <app-book-detail (closeBook)="closeBook()"></app-book-detail>
+    </div>
+</div>

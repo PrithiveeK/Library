@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Payment Home</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            width: 98vw;
+            height: 98vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1{
+            font-size: 100px;
+        }
+        form > h1 {
+            font-size: 90px;
+        }
+        input{
+            font-size: 40px;
+            padding: 20px;
+            color: #ffc97b;
+            background-color: #925f22;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Payment Home</h1>
+    {% if error %}
+    <h3>{{ error }}</h3>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <h1>Amount: 10</h1>
+        <input type="submit" name="submit" value="Proceed to pay" required>
+    </form>
+</body>
+
+</html>

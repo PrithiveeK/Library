@@ -1,0 +1,38 @@
+:root{
+    --pages-color: #b39b5e;
+    --book-side: #ac9969;
+    --book-bottom: #d3bf8c;
+    --cover-color: #e38645;
+    --cover-shadow: inset 0 0 4.5em .4em#000000d1; 
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+input, button{
+    outline: none;
+    border: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+ul{
+    list-style: none;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+}
+
+
+iframe{
+    width: 100%;
+    height: calc(100vh - 70px);
+}

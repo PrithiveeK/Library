@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>LOG-IN</h1>
+    <form [formGroup]="loginDetails" (submit)="login($event)">
+    <div class="input-ele">
+        <label for="userEmail">Email</label>
+        <input type="email" formControlName="userEmail"/>
+        <div class="show-errors" *ngIf="userEmail.invalid && userEmail.touched">
+            <small *ngIf="userEmail.errors?.required">UserEmail is required</small>
+            <small *ngIf="userEmail.errors?.email">UserEmail is invalid</small>
+        </div>
+    </div>
+    <div class="input-ele">
+        <label for="userPassword">Password</label>
+        <input type="password" formControlName="userPassword"/>
+        <div class="show-errors" *ngIf="userPassword.invalid && userPassword.touched">
+            <small *ngIf="userPassword.errors?.required">Password is required</small>
+            <small *ngIf="userPassword.errors?.minlength">Password is very short</small>
+        </div>
+    </div>
+    <button type="submit">May I Come In.</button>
+    <div [style.color]="'red'" [style.fontSize]="'18px'" [style.margin]="'5px'">{{error}}</div>
+    </form>
+</div>

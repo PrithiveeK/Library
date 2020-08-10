@@ -1,0 +1,27 @@
+.books-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    overflow: auto;
+}
+.books-container::-webkit-scrollbar{
+    height: 10px;
+}
+.books-container::-webkit-scrollbar-thumb{
+    background-color: #5a2e1e8f;
+}
+.book-list{
+    display: flex;
+    width: 100%;
+}
+.filter-container{
+    display: flex;
+    align-self: flex-end;
+    margin-right: 35px;
+}
+.filter-container > span {
+    margin: 5px;
+    height: 25px;
+    cursor: pointer;
+}

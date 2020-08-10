@@ -1,0 +1,32 @@
+.shelf{
+    width: 90vw;
+    height: 200px;
+    display: flex;
+}
+
+.shelf-title{
+    writing-mode: vertical-rl;
+    transform: rotateZ(180deg);
+    text-align: center;
+    width: 100px;
+    display: flex;
+    align-self: center;
+    align-items: center;
+}
+
+.book-container{
+    width: 100%;
+    border-bottom: 10px solid brown;
+    overflow: auto hidden;
+}
+
+.book-shelf{
+    display: flex;
+    font-size: 5px;
+}
+.book-container::-webkit-scrollbar{
+    display: none;
+}
+.book-shelf > li{
+    margin: 20px 5px;
+}

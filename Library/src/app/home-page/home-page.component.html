@@ -1,0 +1,22 @@
+<div class="home-container">
+    <app-header-bar></app-header-bar>
+    <app-footer-bar (shelfChange)="changeShelfSize($event)"
+    (sortBooks)="sortTheBooksBy($event)" (viewBook)="vBookDetail($event)"></app-footer-bar>
+    <div class="body-container">
+        <div class="body-content" *ngIf="isLoaded">
+            <div class="book-shelf">
+                <ul>
+                    <li (click)="viewBookDetail($event)" *ngFor="let book of books">
+                        <app-book [bookTitle]="book.title" [bookId]="book.id"></app-book>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="book-result" *ngIf="viewBook">
+            <app-book-detail (closeBook)="closeBook()"></app-book-detail>
+        </div>
+    </div>
+    <div class="loader-container" *ngIf="!isLoaded">
+        <app-loading></app-loading>
+    </div>
+</div>

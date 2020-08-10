@@ -1,0 +1,59 @@
+<div class="book-detail-container">
+    <div class="message-container" *ngIf="msg.is" [style.backgroundColor]="msg.done ? 'green': 'red'">
+        {{msg.message}}
+    </div>
+    <div class="options-bar">
+        <div class="wish-list" title="Add to read list" (click)="addBook()" *ngIf="!bookDetail.isTR"></div>
+        <div class="added-tr" *ngIf="bookDetail.isTR"></div>
+        <div class="close" (click)="closeTheBook()"></div>
+    </div>
+    <div class="book" [class.book-opened]="isOpen">
+        <div class="book-container">
+            <div class="book-cover left-container" 
+            [style.transform]="isOpen ? 'rotateY(-180deg)' : 'none'" 
+            [style.z-index]="isOpen ? 0 : 2">
+                <div class="front-back">
+                    <div class="page title">
+                        <div class="content title-content">
+                            <p class='book-title'>{{bookDetail.title}}</p>
+                            <button (click)="isOpen = true" *ngIf="!isOpen;">Open Book</button>
+                        </div>
+                    </div>
+                    <div class="page left--back">
+                        <div class="basic-book-details">
+                            <div>
+                                <h3>Author</h3>
+                                <p class='book-detail'>{{bookDetail.author}}</p>
+                            </div>
+                            <div>
+                                <h3>Publisher</h3>
+                                <p class='book-detail'>{{bookDetail.publisher}} {{bookDetail.published_date}}</p>
+                            </div>
+                            <div>
+                                <h3>Generes</h3>
+                                <p *ngIf="bookDetail.generes.length===0">None</p>
+                                <ul *ngIf="bookDetail.generes.length>0">
+                                    <li *ngFor="let genere of bookDetail.generes">{{genere}}</li>
+                                </ul>
+                            </div>
+                            <button class="read-button" (click)="readBook()">Read Book</button>
+                            <button class="read-button" (click)="buyBook()">Buy Book</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-bottom" [style.border-radius]="isOpen ? '0em' : '1em 0 0 1.5em'"></div>
+                <div class="book-side"></div>
+            </div>
+            <div class="book-cover right-container">
+                <div class="page front">
+                    <div class="book-description">
+                        <h1>Description</h1>
+                        <p>{{bookDetail.description}}</p>
+                    </div>
+                </div>
+                <div class="book-bottom" [style.border-radius]="isOpen ? '0em' : '1em 0 0 1.5em'"></div>
+                <div class="book-side"></div>
+            </div>
+        </div>
+    </div>
+</div>

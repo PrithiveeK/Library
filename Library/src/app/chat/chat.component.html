@@ -1,0 +1,76 @@
+<div class="chat-application">
+    <div class="chat-icon-container" (click)="viewChat()">
+        <div class="chat-icon"></div>
+        <i class="display-dot" *ngIf="allNotification!==0"></i>
+    </div>
+    <div class="chat-container" [class.chat-clicked]="openChat">
+        <div class="top-bar">
+            <h1 class="chatter">Chat 🤓</h1>
+            <div class="options-container">
+                <span class="chat-options" (click)="optionsClicked = !optionsClicked">
+                    <i class="options-icon"></i>
+                </span>
+                <div class="options-list" [class.options-clicked]="optionsClicked">
+                    <div class="options-item" (click)="chatViewPage=1;optionsClicked=false">
+                        New Chat
+                    </div>
+                    <div class="options-item" (click)="chatViewPage=2;optionsClicked=false">
+                        New Group
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-with">
+            <div (click)="chatWith = false" [class.panel-selected]="!chatWith">{{ currChat }}</div>
+            <div (click)="chatWith = true" [class.panel-selected]="chatWith">Chat Threads</div>
+        </div>
+        <div class="panel-container">
+            <div class="panel" [class.panel-move]="chatWith">
+                <div class="chat-panel">
+                    <div class="chat-content panel-scroll" #chatContent>
+                        <div class="chat-content-list">
+                            <app-chat-message 
+                                [message]="message" 
+                                *ngFor="let message of chatMessages" 
+                                #chatItem
+                            ></app-chat-message>
+                        </div>
+                    </div>
+                    <form class="my-message" (submit)="sendMessage($event)">
+                        <input type="text" placeholder="Type here..." class="msg-content" />
+                        <button type="submit" class="send-btn">
+                            <div class="send-button"></div>
+                        </button>
+                    </form>
+                </div>
+                <div class="member-panel panel-scroll">
+                    <div *ngFor="let thread of allThreads" class="member-item" (click)="changeChat(thread)">
+                        <div class="display-name">{{thread.displayname}}</div>
+                        <div class="notification" *ngIf="chatNotifications[thread.thread_id]?true:false">
+                            {{chatNotifications[thread.thread_id]}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="new-panel" [class.new-panel-open]="chatViewPage!==0">
+            <div class="top-bar">
+                <div class="back-icon" (click)="chatViewPage=0"></div>
+                <h1 class="chatter">Members</h1>
+                <small [style.color]="'red'">{{groupError}}</small>
+            </div>
+            <form class="group-name-form" *ngIf="chatViewPage===2" (submit)="createGroup($event)">
+                <input type="text" class="group-name-input" placeholder="Group name"/>
+                <button type="submit">Done</button>
+            </form>
+            <div class="member-panel panel-scroll">
+                <div *ngFor="let user of allUsers" class="member-item" (click)="selectMember(user)">
+                    <div class="display-name">{{user.username}}</div>
+                    <div class="notification" *ngIf="chatViewPage===2">
+                        <i [class.member-selected]="user.selected?true:false"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

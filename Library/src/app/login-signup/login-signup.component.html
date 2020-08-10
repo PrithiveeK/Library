@@ -1,0 +1,52 @@
+<div class="home-page">
+    <div class="registration">
+        <div class="book" [class.book-opened]="isOpen">
+            <div class="book-container">
+                <div class="book-cover left-container" 
+                [style.transform]="isOpen ? 'rotateY(-180deg)' : 'none'" 
+                [style.z-index]="isOpen ? 0 : 2">
+                    <div class="front-back">
+                        <div class="page title">
+                            <div class="content title-content">
+                                <p class='para'>WELCOME TO THE LIBRARY</p>
+                                <button (click)="isOpen = true" *ngIf="!isOpen;">Open Book</button>
+                            </div>
+                        </div>
+                        <div class="page left--back">
+                            <div class="login-content">
+                                <app-login></app-login>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-bottom" [style.border-radius]="isOpen ? '0em' : '1em 0 0 1.5em'"></div>
+                    <div class="book-side"></div>
+                </div>
+                <div class="middle-page">
+                    <div class="secondary" [style.transform]="gotoPage ? 'rotateY(0deg)' : 'rotateY(-180deg)'">
+                        <div class="page page-front">
+                            <div class="content">
+                                <p class='para'>Create Your Account</p>
+                                <button (click)="gotoPage = !gotoPage;" *ngIf="gotoPage;">SignUp</button>
+                            </div>
+                        </div>
+                        <div class="page page-back">
+                            <div class="content">
+                                <p class='para'>Already have an Account</p>
+                                <button (click)="gotoPage = !gotoPage;" *ngIf="!gotoPage;">LogIn</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-cover right-container">
+                    <div class="page front">
+                        <div class="signup-content">
+                            <app-signup></app-signup>
+                        </div>
+                    </div>
+                    <div class="book-bottom" [style.border-radius]="isOpen ? '0em' : '1em 0 0 1.5em'"></div>
+                    <div class="book-side"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

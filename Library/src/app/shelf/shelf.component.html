@@ -1,0 +1,10 @@
+<div class="shelf">
+    <h1 class="shelf-title">{{title}}</h1>
+    <div class="book-container">
+        <ul class="book-shelf">
+            <li (click)="openTheBook($event)" *ngFor="let book of books">
+                <app-book [bookTitle]="book.book.title" [bookId]="book.book.id"></app-book>
+            </li>
+        </ul>
+    </div>
+</div>

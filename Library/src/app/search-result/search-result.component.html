@@ -1,0 +1,13 @@
+<div class="books-container">
+    <div class="filter-container">
+        <span (click)="filterT = !filterT;getBooks()"><input type="checkbox" [checked]="filterT"/>Title</span>
+        <span (click)="filterA = !filterA;getBooks()"><input type="checkbox" [checked]="filterA"/>Author</span>
+        <span (click)="filterP = !filterP;getBooks()"><input type="checkbox" [checked]="filterP"/>Publisher</span>
+        <span (click)="filterD = !filterD;getBooks()"><input type="checkbox" [checked]="filterD"/>Description</span>
+    </div>
+    <ul class="book-list">
+        <li *ngFor="let book of books" (click)="showBook($event)">
+            <app-book [bookTitle]="book.title" [bookId]="book.id"></app-book>
+        </li>
+    </ul>
+</div>

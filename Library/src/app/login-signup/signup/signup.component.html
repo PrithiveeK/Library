@@ -1,0 +1,40 @@
+<div class="container">
+    <h1>SIGN-UP</h1>
+    <form [formGroup]="signupDetails" (submit)="signup($event)">
+        <div>
+            <label for="newUserName">Username</label>
+            <input type="text" formControlName="newUserName">
+            <div class="show-errors" *ngIf="userName.invalid && userName.touched">
+                <small *ngIf="userName.errors?.required">UserName is required</small>
+                <small *ngIf="userName.errors?.pattern">UserName is invalid</small>
+                <small *ngIf="userName.errors?.minlength">UserName is very short</small>
+            </div>
+        </div>
+        <div>
+            <label for="newUserEmail">Email</label>
+            <input type="email" formControlName="newUserEmail">
+            <div class="show-errors" *ngIf="userEmail.invalid && userEmail.touched">
+                <small *ngIf="userEmail.errors?.required">UserEmail is required</small>
+                <small *ngIf="userEmail.errors?.email">UserEmail is invalid</small>
+            </div>
+        </div>
+        <div>
+            <label for="createNewPassword">Password</label>
+            <input type="password" formControlName="createNewPassword">
+            <div class="show-errors" *ngIf="newPassword.invalid && newPassword.touched">
+                <small *ngIf="newPassword.errors?.required">Password is required</small>
+                <small *ngIf="newPassword.errors?.minlength">Password is very short</small>
+            </div>
+        </div>
+        <div class="confirm-pass" [style.height]="newPassword.dirty ? '8em' : '0em'">
+            <label for="confirmNewPassword">Confirm Password</label>
+            <input type="password" formControlName="confirmNewPassword">
+            <div class="show-errors" *ngIf="confirmPassword.invalid && confirmPassword.touched || signupDetails.errors?.misMatch">
+                <small *ngIf="confirmPassword.errors?.required">Confirm Your password</small>
+                <small *ngIf="signupDetails.errors?.misMatch && !confirmPassword.errors?.required">Password Donot match</small>
+            </div>
+        </div>
+        <button type="submit">Count Me In</button>
+        <div [style.color]="'red'" [style.fontSize]="'18px'" [style.margin]="'5px'">{{error}}</div>
+    </form>
+</div>
