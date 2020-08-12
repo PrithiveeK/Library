@@ -262,6 +262,7 @@ app-chat-message{
     width: 25px;
     height: 20px;
     position: relative;
+    cursor: pointer;
 }
 .back-icon::before{
     content: "";

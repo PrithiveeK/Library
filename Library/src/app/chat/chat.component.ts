@@ -14,7 +14,7 @@ export class ChatComponent implements OnInit {
   public chatNotifications: any;
   public allNotification = 0;
   public optionsClicked = false;
-  public openChat = true;
+  public openChat = false;
   public allThreads: any[] = [];
   public groupError = "";
   public allUsers = [];
